@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Website</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      transition: background 0.3s;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 id="title">Welcome to my website</h1>
+  <p id="subtitle">Made using only my phone 📱</p>
+
+  <button onclick="change()">Click Me</button>
+
+  <script>
+    let on = false;
+
+    function change() {
+      const title = document.getElementById("title");
+      const body = document.body;
+
+      if (on) {
+        title.innerText = "Welcome to my website";
+        body.style.background = "#f2f2f2";
+      } else {
+        title.innerText = "Button clicked! Website is interactive 😎";
+        body.style.background = "#000";
+      }
+
+      on = !on;
+    }
+  </script>
+
+</body>
+</html>
