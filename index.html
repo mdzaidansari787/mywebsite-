@@ -2,65 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First Website</title>
+  <title>My First Interactive Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      transition: background 0.3s;
+      background: #ffffff;
+      color: #000;
+      text-align: center;
+      padding: 20px;
+      transition: 0.3s;
     }
 
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      margin-bottom: 20px;
-      color: #555;
+    body.dark {
+      background: #121212;
+      color: #ffffff;
     }
 
     button {
-      padding: 12px 24px;
+      padding: 10px 18px;
+      margin: 10px;
       font-size: 16px;
+      cursor: pointer;
       border: none;
       border-radius: 6px;
-      background: #333;
+    }
+
+    .primary {
+      background: #007bff;
       color: white;
-      cursor: pointer;
+    }
+
+    .danger {
+      background: #dc3545;
+      color: white;
+    }
+
+    input {
+      padding: 8px;
+      width: 80px;
+      font-size: 16px;
     }
   </style>
 </head>
 
 <body>
 
-  <h1 id="title">Welcome to my website</h1>
-  <p id="subtitle">Made using only my phone 📱</p>
+  <h1>My First Interactive Website</h1>
+  <p>Built fully on mobile 📱</p>
 
-  <button onclick="change()">Click Me</button>
+  <!-- Click Counter -->
+  <h2>Click Counter</h2>
+  <p id="count">0</p>
+  <button class="primary" onclick="increaseCount()">Click Me</button>
+
+  <!-- Dark / Light Toggle -->
+  <h2>Dark / Light Mode</h2>
+  <button class="danger" onclick="toggleMode()">Toggle Mode</button>
+
+  <!-- Calculator -->
+  <h2>Simple Calculator</h2>
+  <input type="number" id="num1">
+  <input type="number" id="num2">
+  <br>
+  <button class="primary" onclick="calculate()">Add</button>
+  <p id="result"></p>
 
   <script>
-    let on = false;
+    let count = 0;
 
-    function change() {
-      const title = document.getElementById("title");
-      const body = document.body;
+    function increaseCount() {
+      count++;
+      document.getElementById("count").innerText = count;
+    }
 
-      if (on) {
-        title.innerText = "Welcome to my website";
-        body.style.background = "#f2f2f2";
-      } else {
-        title.innerText = "Button clicked! Website is interactive 😎";
-        body.style.background = "#000";
-      }
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
 
-      on = !on;
+    function calculate() {
+      let a = Number(document.getElementById("num1").value);
+      let b = Number(document.getElementById("num2").value);
+      document.getElementById("result").innerText = "Result: " + (a + b);
     }
   </script>
 
